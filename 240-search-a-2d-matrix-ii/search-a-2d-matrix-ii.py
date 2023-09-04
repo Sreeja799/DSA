@@ -13,7 +13,6 @@ class Solution:
 
 
         for i in matrix:
-            print(i)
             if binarySearch(target, i, 0, len(matrix[0])-1):
                 return True
         return False
