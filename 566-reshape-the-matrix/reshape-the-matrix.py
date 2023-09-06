@@ -3,16 +3,18 @@ class Solution:
         arr = []
         if ((r * c) != (len(mat) * len(mat[0]))):
             return mat
-        
-        temp = [j for i in mat for j in i] # flattening
-        print(temp)
-        ct = 0
 
-        for i in range(r):
-            row = []
-            for j in range(c):
-                row.append(temp[ct])
-                ct += 1
-            arr.append(row)
+        rowi = 0
+        coli = 0
+
+        for _ in range(r):
+            temp = []
+            for i in range(c):
+                temp.append(mat[rowi][coli])
+                coli += 1
+                if coli == len(mat[0]):
+                    coli = 0
+                    rowi += 1
+            arr.append(temp)
 
         return arr
