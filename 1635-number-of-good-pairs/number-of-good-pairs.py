@@ -1,10 +1,13 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        n = len(nums)
         count = 0
-        for i in range(n):
-            for j in range(i+1, n):
-                if nums[i] == nums[j]:
-                    count += 1
+        d = {}
+        for i in nums:
+            if i not in d:
+                d[i] = 1
+            else:
+                count += d[i]
+                d[i] += 1
+
 
         return count
