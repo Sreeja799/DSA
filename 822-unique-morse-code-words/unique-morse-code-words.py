@@ -10,9 +10,4 @@ class Solution:
             for j in word:
                 temp += morse[ord(j) - ord('a')]
             new.append(temp)
-
-        unique = []
-        for i in new:
-            if i not in unique:
-                unique.append(i)
-        return len(unique)             
+        return len(set(new))             
