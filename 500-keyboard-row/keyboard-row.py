@@ -1,28 +1,13 @@
 class Solution:
     def findWords(self, words: List[str]) -> List[str]:
-        def check(ch):
-            f = "qwertyuiop"
-            s = "asdfghjkl"
-            t = "zxcvbnm"
-
-            if f.find(ch) != -1:
-                r = f
-            elif s.find(ch) != -1:
-                r = s
-            else:
-                r = t
-            return r
+        f = set("qwertyuiop")
+        s = set("asdfghjkl")
+        t = set("zxcvbnm")
 
         l = []
         for word in words:
-            word_temp = word.lower()
-            flag = True
-            r = check(word_temp[0])
-            for i in range(1, len(word_temp)):
-                if word_temp[i] not in r:
-                    flag = False
-                    break
-
-            if flag == True:
+            word_temp = set(word.lower())
+            if (word_temp <= f) or (word_temp <= s) or (word_temp <= t):
                 l.append(word)
+            
         return l
