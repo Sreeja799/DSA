@@ -1,18 +1,20 @@
 class Solution:
     def shortestToChar(self, s: str, c: str) -> List[int]:
         n = len(s)
-        ans = [0 for i in range(n)]
+        ans = [0] * n
+        cur = -n
 
+        # left to right; left side
         for i in range(n):
-            if s[i] != c:
-                temp1 = temp2 = float('inf')
-                for j in range(i):
-                    if s[j] == c:
-                        temp1 = (i-j)
+            if s[i] == c:
+                cur = i
+            ans[i] = abs(i - cur)
 
-                for j in range(i+1, n):
-                    if s[j] == c:
-                        temp2 = (j-i)
-                        break
-                ans[i] = min(temp1, temp2)
+        # right to left; right side
+        cur = -n
+        for i in range(n-1, -1, -1):
+            if s[i] == c:
+                cur = i
+            ans[i] = min(ans[i], abs(i - cur))
+
         return ans        
