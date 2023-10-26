@@ -3,9 +3,8 @@ class Solution:
         n = len(strs[0])
         count = 0
         for i in range(n):
-            temp = ''
-            for word in strs:
-                temp += word[i]
-            if ''.join(sorted(temp)) != temp:
-                count += 1
+            for j in range(len(strs)-1):
+                if strs[j][i] > strs[j+1][i]:
+                    count += 1
+                    break
         return count        
