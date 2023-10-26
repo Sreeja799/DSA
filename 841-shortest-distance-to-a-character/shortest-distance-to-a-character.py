@@ -14,6 +14,5 @@ class Solution:
                     if s[j] == c:
                         temp2 = (j-i)
                         break
-                print(temp1, temp2)
                 ans[i] = min(temp1, temp2)
         return ans        
