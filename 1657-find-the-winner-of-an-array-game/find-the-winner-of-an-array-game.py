@@ -1,34 +1,16 @@
 class Solution:
     def getWinner(self, arr: List[int], k: int) -> int:
-        orig = arr[:]
         n = len(arr)
-        win_count = 0
-        winner = -1
-        runs = 0
+        curr = arr[0]
+        streak = 0
+        m = max(arr)
 
-        while win_count != k:
-            if runs > n:
-                return winner
-            if arr[0] > arr[1]:
-                if winner == arr[0]:
-                    win_count += 1
-                else:
-                    win_count = 1
-                    winner = arr[0]
-                temp = arr[1]
-                arr.pop(1)
-                arr.append(temp)
-                
-
+        for i in range(1, n):
+            if curr > arr[i]:
+                streak += 1
             else:
-                if winner == arr[1]:
-                    win_count += 1
-                else:
-                    win_count = 1
-                    winner = arr[1]
-                temp = arr[0]
-                arr.pop(0)
-                arr.append(temp)
-            runs += 1
+                curr = arr[i]
+                streak = 1
 
-        return winner
+            if streak == k or curr == m:
+                return curr
