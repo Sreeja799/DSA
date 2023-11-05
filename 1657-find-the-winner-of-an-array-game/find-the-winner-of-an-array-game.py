@@ -7,7 +7,7 @@ class Solution:
         runs = 0
 
         while win_count != k:
-            if runs > 100000:
+            if runs > n:
                 return winner
             if arr[0] > arr[1]:
                 if winner == arr[0]:
