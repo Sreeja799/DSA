@@ -12,7 +12,8 @@ class Solution:
                 left = right
                 right += 1
             elif prices[left] < prices[right]:
-                m = max(m, prices[right] - prices[left])
+                if m < (prices[right] - prices[left]):
+                    m = prices[right] - prices[left]
                 right += 1
         return m
 
